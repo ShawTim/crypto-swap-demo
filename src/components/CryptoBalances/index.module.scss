@@ -96,6 +96,11 @@
                         width: 32px;
                         height: 32px;
                         background: url(./right.png) no-repeat center;
+                        cursor: pointer;
+                        border: none;
+                        &:disabled {
+                            cursor: not-allowed;
+                        }
                     }
                 }
             }

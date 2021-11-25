@@ -23,6 +23,10 @@ const SwapPage = () => {
   const onChangeFromCrypto = useCallback((crypto: SupportedCryptos) => dispatch(setFromCrypto(crypto)), [dispatch]);
   const onChangeFromAmount = useCallback((amount: string) => dispatch(setFromAmount(amount)), [dispatch]);
   const onChangeToCrypto = useCallback((crypto: SupportedCryptos) => dispatch(setToCrypto(crypto)), [dispatch]);
+  const onSelectCrypto = useCallback((crypto: SupportedCryptos) => {
+    dispatch(setFromCrypto(crypto));
+    dispatch(setFromAmount(""));
+  }, [dispatch]);
   const onSwap = useCallback(() => {
     const { fromCrypto, fromAmount, toCrypto } = swapUI;
     const toAmount = numeral(fromAmount).multiply(prices[fromCrypto][toCrypto]).value() || 0;
@@ -45,7 +49,12 @@ const SwapPage = () => {
   return (
     <div className={styles.swapPage}>
       <div className={styles.innerContainer}>
-        <CryptoBalances className={styles.cryptoBalances} balances={balances} prices={prices} />
+        <CryptoBalances
+          className={styles.cryptoBalances}
+          balances={balances}
+          prices={prices}
+          status={swapUI.status}
+          onSelectCrypto={onSelectCrypto} />
         <CryptoSwap
           className={styles.cryptoSwap}
           balances={balances}
