@@ -11,6 +11,7 @@ export type CryptoBalancesProps = React.HTMLAttributes<HTMLElement> & {
   prices: CryptoPriceState,
   balances: WalletBalances,
   status: SwapStatus,
+  isModalOpen: boolean,
   onSelectCrypto: (crypto: SupportedCryptos) => void,
 };
 
@@ -42,7 +43,7 @@ const BalanceListItem = (props: BalanceListItemProps) => (
 );
 
 const CryptoBalances = (props: CryptoBalancesProps) => {
-  const { prices, balances, status, onSelectCrypto } = props;
+  const { prices, balances, status, isModalOpen, onSelectCrypto } = props;
 
   const selectUSDC = useCallback(() => onSelectCrypto(SupportedCryptos.USDC), [onSelectCrypto]);
   const selectWBTC = useCallback(() => onSelectCrypto(SupportedCryptos.WBTC), [onSelectCrypto]);
@@ -57,19 +58,19 @@ const CryptoBalances = (props: CryptoBalancesProps) => {
             crypto={SupportedCryptos.USDC}
             balance={balances[SupportedCryptos.USDC]}
             price={prices[SupportedCryptos.USDC].USD}
-            canSelect={status === SwapStatus.INITIAL}
+            canSelect={status === SwapStatus.INITIAL && !isModalOpen}
             onSelect={selectUSDC} />
           <BalanceListItem
             crypto={SupportedCryptos.WBTC}
             balance={balances[SupportedCryptos.WBTC]}
             price={prices[SupportedCryptos.WBTC].USD}
-            canSelect={status === SwapStatus.INITIAL}
+            canSelect={status === SwapStatus.INITIAL && !isModalOpen}
             onSelect={selectWBTC} />
           <BalanceListItem
             crypto={SupportedCryptos.ETH}
             balance={balances[SupportedCryptos.ETH]}
             price={prices[SupportedCryptos.ETH].USD}
-            canSelect={status === SwapStatus.INITIAL}
+            canSelect={status === SwapStatus.INITIAL && !isModalOpen}
             onSelect={selectETH} />
         </ul>
       </div>

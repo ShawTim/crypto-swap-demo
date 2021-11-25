@@ -15,11 +15,12 @@ export type CryptoSwapProps = React.HTMLAttributes<HTMLElement> & {
   onChangeFromCrypto: (crypto: SupportedCryptos) => void,
   onChangeFromAmount: (amount: string) => void,
   onChangeToCrypto: (crypto: SupportedCryptos) => void,
+  onChangeIsModalOpen: (isModalOpen: boolean) => void,
   onSwap: () => void,
 };
 
 const CryptoSwap = (props: CryptoSwapProps) => {
-  const { prices, balances, uiState, onChangeSwapStatus, onChangeFromCrypto, onChangeFromAmount, onChangeToCrypto, onSwap } = props;
+  const { prices, balances, uiState, onChangeSwapStatus, onChangeFromCrypto, onChangeFromAmount, onChangeToCrypto, onChangeIsModalOpen, onSwap } = props;
   const [title, setTitle] = useState("");
 
   // get use of useEffect and useState such that no need to call in every re-render
@@ -57,7 +58,8 @@ const CryptoSwap = (props: CryptoSwapProps) => {
             onChangeSwapStatus={onChangeSwapStatus}
             onChangeFromCrypto={onChangeFromCrypto}
             onChangeFromAmount={onChangeFromAmount}
-            onChangeToCrypto={onChangeToCrypto} />
+            onChangeToCrypto={onChangeToCrypto}
+            onChangeIsModalOpen={onChangeIsModalOpen} />
         )}
         {uiState.status !== SwapStatus.INITIAL && (
           <CryptoSwapApprove

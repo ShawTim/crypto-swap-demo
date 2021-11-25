@@ -1,6 +1,6 @@
 import numeral from "numeral";
 
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { KeyboardEvent, useCallback, useEffect, useState } from 'react';
 import { CryptoPriceState, CRYPTO_NAMES, SupportedCryptos } from "../../features/cryptoPrice/slice";
 import { WalletBalances } from "../../features/wallet/slice";
 
@@ -17,11 +17,16 @@ const CryptoSelectListItem = (props: CryptSelectListItemProps) => {
   const { crypto, price, balance, onSelect } = props;
   const [cryptoValue, setCryptoValue] = useState("");
   const onClickListItem = useCallback(() => onSelect(crypto), [crypto, onSelect]);
+  const onEnterListItem = useCallback((ev: KeyboardEvent) => {
+    if (ev.key === " " || ev.key === "Enter") {
+      onSelect(crypto);
+    }
+  }, [crypto, onSelect])
 
   useEffect(() => setCryptoValue(numeral(price).multiply(balance).format("$0,0.00[000000]")), [price, balance]);
 
   return (
-    <li className={styles.cryptoSelectListItem} onClick={onClickListItem}>
+    <li className={styles.cryptoSelectListItem} tabIndex={0} onClick={onClickListItem} onKeyUp={onEnterListItem}>
       <div className={styles.cryptoSelectListItemCryptoContainer}>
         <div className={`${styles.cryptoSelectListItemCryptoIcon} ${styles["crypto" + crypto]}`}></div>
         <div className={styles.cryptoSelectListItemCryptoNameContainer}>

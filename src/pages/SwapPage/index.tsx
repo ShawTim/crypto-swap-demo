@@ -4,7 +4,7 @@ import React, { useCallback, useEffect } from 'react';
 import { Redirect } from 'react-router';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import { getCoinGeckoPricesAsync, SupportedCryptos } from '../../features/cryptoPrice/slice';
-import { reset, setFromAmount, setFromCrypto, setStatus, setToCrypto, SwapStatus } from '../../features/swapUI/slice';
+import { reset, setFromAmount, setFromCrypto, setIsModalOpen, setStatus, setToCrypto, SwapStatus } from '../../features/swapUI/slice';
 import { doSwap } from '../../features/wallet/slice';
 import CryptoBalances from '../../components/CryptoBalances';
 import CryptoSwap from '../../components/CryptoSwap';
@@ -23,6 +23,7 @@ const SwapPage = () => {
   const onChangeFromCrypto = useCallback((crypto: SupportedCryptos) => dispatch(setFromCrypto(crypto)), [dispatch]);
   const onChangeFromAmount = useCallback((amount: string) => dispatch(setFromAmount(amount)), [dispatch]);
   const onChangeToCrypto = useCallback((crypto: SupportedCryptos) => dispatch(setToCrypto(crypto)), [dispatch]);
+  const onChangeIsModalOpen = useCallback((isModalOpen: boolean) => dispatch(setIsModalOpen(isModalOpen)), [dispatch]);
   const onSelectCrypto = useCallback((crypto: SupportedCryptos) => {
     dispatch(setFromCrypto(crypto));
     dispatch(setFromAmount(""));
@@ -54,6 +55,7 @@ const SwapPage = () => {
           balances={balances}
           prices={prices}
           status={swapUI.status}
+          isModalOpen={swapUI.isModalOpen}
           onSelectCrypto={onSelectCrypto} />
         <CryptoSwap
           className={styles.cryptoSwap}
@@ -64,6 +66,7 @@ const SwapPage = () => {
           onChangeFromCrypto={onChangeFromCrypto}
           onChangeFromAmount={onChangeFromAmount}
           onChangeToCrypto={onChangeToCrypto}
+          onChangeIsModalOpen={onChangeIsModalOpen}
           onSwap={onSwap} />
       </div>
     </div>

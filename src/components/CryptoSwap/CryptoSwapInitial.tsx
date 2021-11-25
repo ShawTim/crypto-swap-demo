@@ -16,10 +16,11 @@ export type CryptoSwapInitialProps = {
   onChangeFromCrypto: (crypto: SupportedCryptos) => void,
   onChangeFromAmount: (amount: string) => void,
   onChangeToCrypto: (crypto: SupportedCryptos) => void,
+  onChangeIsModalOpen: (isModalOpen: boolean) => void,
 };
 
 const CryptoSwapInitial = (props: any) => {
-  const { prices, balances, uiState, onChangeSwapStatus, onChangeFromCrypto, onChangeFromAmount, onChangeToCrypto } = props;
+  const { prices, balances, uiState, onChangeSwapStatus, onChangeFromCrypto, onChangeFromAmount, onChangeToCrypto, onChangeIsModalOpen } = props;
   const [fromBalance, setFromBalance] = useState("");
   const [toBalance, setToBalance] = useState("");
   const [toAmount, setToAmount] = useState("");
@@ -55,29 +56,34 @@ const CryptoSwapInitial = (props: any) => {
       }
     }
   }, [balances, uiState.fromCrypto, onChangeFromAmount]);
+  const closeCryptoSelectModal = useCallback(() => {
+    setFromCryptoSelectOpen(false);
+    setToCryptoSelectOpen(false);
+    onChangeIsModalOpen(false);
+  }, []);
   const onSelectFromCrypto = useCallback((crypto: SupportedCryptos) => {
     onChangeFromCrypto(crypto);
     onChangeFromAmount("");
-    setFromCryptoSelectOpen(false);
+    closeCryptoSelectModal();
   }, [onChangeFromCrypto, onChangeFromAmount]);
   const onSelectToCrypto = useCallback((crypto: SupportedCryptos) => {
     onChangeToCrypto(crypto);
-    setToCryptoSelectOpen(false);
+    closeCryptoSelectModal();
   }, [onChangeToCrypto]);
   const openFromCryptoSelectModal = useCallback(() => {
     setFromCryptoSelectOpen(true);
     setToCryptoSelectOpen(false);
+    onChangeIsModalOpen(true);
   }, []);
-  const closeFromCryptoSelectModal = useCallback(() => setFromCryptoSelectOpen(false), []);
   const openToCryptoSelectModal = useCallback(() => {
     setFromCryptoSelectOpen(false);
     setToCryptoSelectOpen(true);
+    onChangeIsModalOpen(true);
   }, []);
-  const closeToCryptoSelectModal = useCallback(() => setToCryptoSelectOpen(false), []);
 
   return (
     <div className={styles.swapBody}>
-      <div className={`${styles.swapInnerBody} ${(fromCryptoSelectOpen || toCryptoSelectOpen) ? styles.swapCryptoSelectOpen : ""}`}>
+      <div className={`${styles.swapInnerBody} ${uiState.isModalOpen ? styles.swapCryptoSelectOpen : ""}`}>
         <div className={styles.swapFromContainer}>
           <span className={styles.swapFromText}>From</span>
           <span className={styles.swapFromBalance}>Balance: {fromBalance}</span>
@@ -86,12 +92,13 @@ const CryptoSwapInitial = (props: any) => {
             pattern="[0-9]*[.]?[0-9]*"
             placeholder="0.00"
             value={uiState.fromAmount}
+            disabled={uiState.isModalOpen}
             onChange={onChangeFromAmountInput} />
-          <button className={styles.maxButton} onClick={onClickMaxButton}>MAX</button>
+          <button className={styles.maxButton} onClick={onClickMaxButton} disabled={uiState.isModalOpen}>MAX</button>
           <div className={styles.swapFromCryptoSelector}>
             <span className={styles.swapFromCryptoName}>{uiState.fromCrypto}</span>
             <div className={`${styles.swapFromCryptoIcon} ${styles["crypto" + uiState.fromCrypto]}`}></div>
-            <button className={styles.downArrow} onClick={openFromCryptoSelectModal}></button>
+            <button className={styles.downArrow} onClick={openFromCryptoSelectModal} disabled={uiState.isModalOpen}></button>
           </div>
         </div>
         <div className={styles.toArrow}></div>
@@ -107,7 +114,7 @@ const CryptoSwapInitial = (props: any) => {
           <div className={styles.swapToCryptoSelector}>
             <span className={styles.swapToCryptoName}>{uiState.toCrypto}</span>
             <div className={`${styles.swapToCryptoIcon} ${styles["crypto" + uiState.toCrypto]}`}></div>
-            <button className={styles.downArrow} onClick={openToCryptoSelectModal}></button>
+            <button className={styles.downArrow} onClick={openToCryptoSelectModal} disabled={uiState.isModalOpen}></button>
           </div>
         </div>
       </div>
@@ -117,7 +124,7 @@ const CryptoSwapInitial = (props: any) => {
         title="From"
         prices={prices}
         balances={balances}
-        onClose={closeFromCryptoSelectModal}
+        onClose={closeCryptoSelectModal}
         onSelectListItem={onSelectFromCrypto} />
       <CryptoSelectModal
         className={styles.swapToCryptoSelectModal}
@@ -125,7 +132,7 @@ const CryptoSwapInitial = (props: any) => {
         title="To"
         prices={prices}
         balances={balances}
-        onClose={closeToCryptoSelectModal}
+        onClose={closeCryptoSelectModal}
         onSelectListItem={onSelectToCrypto} />
       <button className={styles.reviewButton} disabled={disableReview} onClick={onClickReviewButton}>Review</button>
     </div>
