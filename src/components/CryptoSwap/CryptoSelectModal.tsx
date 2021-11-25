@@ -23,7 +23,7 @@ const CryptoSelectListItem = (props: CryptSelectListItemProps) => {
     }
   }, [crypto, onSelect])
 
-  useEffect(() => setCryptoValue(numeral(price).multiply(balance).format("$0,0.00[000000]")), [price, balance]);
+  useEffect(() => setCryptoValue(numeral(price).multiply(balance).format("$0,0.00")), [price, balance]);
 
   return (
     <li className={styles.cryptoSelectListItem} tabIndex={0} onClick={onClickListItem} onKeyUp={onEnterListItem}>
