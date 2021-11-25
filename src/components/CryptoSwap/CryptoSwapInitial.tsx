@@ -100,6 +100,7 @@ const CryptoSwapInitial = (props: any) => {
           <span className={styles.swapToBalance}>Balance: {toBalance}</span>
           <input
             className={styles.swapToAmount}
+            tabIndex={-1}
             placeholder="0.00"
             readOnly
             value={toAmount} />
