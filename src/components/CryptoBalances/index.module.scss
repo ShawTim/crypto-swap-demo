@@ -1,0 +1,104 @@
+.cryptoBalances {
+    width: 570px;
+    .balanceContainer {
+        width: 522px;
+        margin: auto;
+        .balanceTitle {
+            font: 500 normal 24px Inter;
+            line-height: 32px;
+            color: #000000;
+        }
+        .cryptoList {
+            position: absolute;
+            width: 522px;
+            top: 48px;
+            margin: 0 auto;
+            padding: 0;
+            .cryptoListItem {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                width: 100%;
+                height: 72px;
+                list-style: none;
+                &:not(:last-child) {
+                    border-bottom: 1px solid #F0F0F0;
+                }
+                .cryptoNameContainer {
+                    display: flex;
+                    align-items: center;
+                    position: relative;
+                    width: 50%;
+                    height: 32px;
+                    .cryptoIcon {
+                        width: 32px;
+                        height: 32px;
+                        &.cryptoUSDC {
+                            background: center/contain url(./USDC.png);
+                        }
+                        &.cryptoWBTC {
+                            background: center/contain url(./WBTC.png);
+                        }
+                        &.cryptoETH {
+                            background: center/contain url(./ETH.png);
+                        }
+                    }
+                    .cryptoName {
+                        position: relative;
+                        height: 42px;
+                        .cryptoNameTitle {
+                            position: absolute;
+                            left: 12px;
+                            top: 0px;
+                            font: 500 normal 14px Inter;
+                            line-height: 22px;
+                            color: #000000;
+                        }
+                        .cryptoNameDesc {
+                            position: absolute;
+                            left: 12px;
+                            top: 22px;
+                            font: 400 normal 12px Inter;
+                            white-space: nowrap;
+                            line-height: 20px;
+                            color: rgba(0, 0, 0, 0.45);
+                        }
+                    }
+                }
+                .cryptoBalanceContainer {
+                    display: flex;
+                    justify-content: flex-end;
+                    align-items: center;
+                    position: relative;
+                    width: 50%;
+                    height: 32px;
+                    .cryptoBalance {
+                        position: relative;
+                        height: 42px;
+                        .cryptoValue {
+                            position: absolute;
+                            right: 0;
+                            top: 0;
+                            font: 600 normal 14px Inter;
+                            line-height: 22px;
+                            color: #000000;
+                        }
+                        .cryptoAmount {
+                            position: absolute;
+                            right: 0;
+                            top: 22px;
+                            font: 400 normal 12px Inter;
+                            line-height: 20px;
+                            color: rgba(0, 0, 0, 0.45);
+                        }
+                    }
+                    .rightArrow {
+                        width: 32px;
+                        height: 32px;
+                        background: url(./right.png) no-repeat center;
+                    }
+                }
+            }
+        }
+    }
+}

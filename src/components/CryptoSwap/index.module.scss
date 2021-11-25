@@ -1,0 +1,607 @@
+.cryptoSwap {
+    width: 333px;
+    background: #FFFFFF;
+    box-shadow: 0px 3px 6px -4px rgba(0, 0, 0, 0.12), 0px 6px 16px rgba(0, 0, 0, 0.08), 0px 9px 28px 8px rgba(0, 0, 0, 0.05);
+    border-radius: 12px;
+    &.statusINITIAL {
+        height: 428.5px;
+    }
+    &.statusREVIEW,
+    &.statusAPPROVING,
+    &.statusAPPROVED,
+    &.statusCONFIRMING {
+        height: 573.18px;
+    }
+    .swapHeader {
+        width: 333px;
+        height: 55px;
+        .swapTitle {
+            position: absolute;
+            height: 28px;
+            left: 24px;
+            top: 16px;
+            font: 500 normal 20px Inter;
+            line-height: 28px;
+            color: #000000;
+        }
+        .closeButton {
+            position: absolute;
+            top: 20px;
+            right: 17px;
+            width: 18px;
+            height: 18px;
+            background: url(./close.png) no-repeat center;
+            border: none;
+            cursor: pointer;
+        }
+    }
+    .swapBodyContainer {
+        position: absolute;
+        width: 333px;
+        left: 0px;
+        top: 55px;
+        border-radius: 5px;
+        &.statusINITIAL {
+            height: 373.5px;
+            .swapBody {
+                position: relative;
+                width: 285px;
+                height: 325.5px;
+                top: 24px;
+                margin: auto;
+                .swapInnerBody {
+                    width: 285px;
+                    height: 247.5px;
+                    &.swapCryptoSelectOpen {
+                        opacity: 0.1;
+                    }
+                    .swapFromContainer {
+                        position: absolute;
+                        width: 285px;
+                        height: 100px;
+                        left: 0px;
+                        top: 0px;
+                        background: #FFFFFF;
+                        border: 1px solid #D9D9D9;
+                        box-sizing: border-box;
+                        box-shadow: 0px 2px 0px rgba(0, 0, 0, 0.043);
+                        border-radius: 5px;
+                        .swapFromText {
+                            position: absolute;
+                            width: 35px;
+                            height: 22px;
+                            left: 11.9px;
+                            top: 8.5px;
+                            font: 600 normal 14px Inter;
+                            line-height: 22px;
+                            color: #8C8C8C;
+                        }
+                        .maxButton {
+                            position: absolute;
+                            width: 46px;
+                            height: 24px;
+                            left: 122px;
+                            top: 38px;
+                            border: 1px solid #0185FF;
+                            box-sizing: border-box;
+                            filter: drop-shadow(0px 2px 0px rgba(0, 0, 0, 0.016));
+                            border-radius: 5px;
+                            background: #FFFFFF;
+                            font: 500 normal 14px Inter;
+                            line-height: 20px;
+                            color: #0185FF;
+                            cursor: pointer;
+                            &:hover {
+                                background: rgba(0, 0, 0, 0.2);
+                            }
+                        }
+                        .swapFromBalance {
+                            position: absolute;
+                            height: 20px;
+                            right: 12px;
+                            top: 72.61px;
+                            font: 400 normal 12px Inter;
+                            line-height: 20px;
+                            color: #8C8C8C;
+                            text-align: right;
+                        }
+                        .swapFromAmount {
+                            position: absolute;
+                            width: 100px;
+                            height: 32px;
+                            left: 11.9px;
+                            top: 34px;
+                            font: 600 normal 16px Inter;
+                            line-height: 32px;
+                            color: #000000;
+                            border: none;
+                            outline: none;
+                            &::placeholder {
+                                color: #8C8C8C;
+                                opacity: inherit;
+                            }
+                        }
+                        .swapFromCryptoSelector {
+                            position: absolute;
+                            height: 32px;
+                            right: 0;
+                            top: 34px;
+                            .swapFromCryptoName {
+                                position: absolute;
+                                right: 64px;
+                                top: 5px;
+                                font: 500 normal 14px Inter;
+                                line-height: 22px;
+                                color: #000000;
+                            }
+                            .swapFromCryptoIcon {
+                                position: absolute;
+                                right: 34px;
+                                top: 5px;
+                                width: 22px;
+                                height: 22px;
+                                &.cryptoUSDC {
+                                    background: center/contain url(./USDC.png);
+                                }
+                                &.cryptoWBTC {
+                                    background: center/contain url(./WBTC.png);
+                                }
+                                &.cryptoETH {
+                                    background: center/contain url(./ETH.png);
+                                }
+                            }
+                            .downArrow {
+                                position: absolute;
+                                right: 0;
+                                width: 32px;
+                                height: 32px;
+                                background: url(./down.png) no-repeat center;
+                                border: none;
+                                cursor: pointer;
+                            }
+                        }
+                    }
+                    .toArrow {
+                        position: absolute;
+                        width: 6.78px;
+                        height: 17.04px;
+                        left: 131.91px;
+                        top: 115.23px;
+                        background: url(./to-arrow.png);
+                    }
+                    .swapToContainer {
+                        position: absolute;
+                        width: 285px;
+                        height: 100px;
+                        left: 0px;
+                        top: 147.5px;
+                        background: #FFFFFF;
+                        border: 1px solid #D9D9D9;
+                        box-sizing: border-box;
+                        box-shadow: 0px 2px 0px rgba(0, 0, 0, 0.043);
+                        border-radius: 5px;
+                        .swapToText {
+                            position: absolute;
+                            width: 17px;
+                            height: 22px;
+                            left: 11.9px;
+                            top: 9px;
+                            font: 600 normal 14px Inter;
+                            line-height: 22px;
+                            color: #8C8C8C;
+                        }
+                        .swapToBalance {
+                            position: absolute;
+                            height: 20px;
+                            right: 12px;
+                            top: 74px;
+                            font: 400 normal 12px Inter;
+                            line-height: 20px;
+                            color: #8C8C8C;
+                            text-align: right;
+                        }
+                        .swapToAmount {
+                            position: absolute;
+                            width: 150px;
+                            height: 32px;
+                            left: 11.9px;
+                            top: 34px;
+                            font: 600 normal 16px Inter;
+                            line-height: 32px;
+                            color: #000000;
+                            border: none;
+                            outline: none;
+                            &::placeholder {
+                                opacity: inherit;
+                                color: #8C8C8C;
+                            }
+                        }
+                        .swapToCryptoSelector {
+                            position: absolute;
+                            height: 32px;
+                            right: 0;
+                            top: 34px;
+                            .swapToCryptoName {
+                                position: absolute;
+                                right: 64px;
+                                top: 5px;
+                                font: 500 normal 14px Inter;
+                                line-height: 22px;
+                                color: #000000;
+                            }
+                            .swapToCryptoIcon {
+                                position: absolute;
+                                right: 34px;
+                                top: 5px;
+                                width: 22px;
+                                height: 22px;
+                                &.cryptoUSDC {
+                                    background: center/contain url(./USDC.png);
+                                }
+                                &.cryptoWBTC {
+                                    background: center/contain url(./WBTC.png);
+                                }
+                                &.cryptoETH {
+                                    background: center/contain url(./ETH.png);
+                                }
+                            }
+                            .downArrow {
+                                position: absolute;
+                                right: 0;
+                                width: 32px;
+                                height: 32px;
+                                background: url(./down.png) no-repeat center;
+                                border: none;
+                                cursor: pointer;
+                            }
+                        }
+                    }
+                }
+                .swapFromCryptoSelectModal {
+                    .cryptoSelectModalBody {
+                        top: 0;
+                    }
+                }
+                .swapToCryptoSelectModal {
+                    .cryptoSelectModalBody {
+                        top: 147.5px;
+                    }
+                }
+                .cryptoSelectModal {
+                    .modalOverlay {
+                        position: fixed;
+                        width: 100vw;
+                        height: 100vh;
+                        top: 0;
+                        left: 0;
+                        z-index: 1000;
+                    }
+                    .cryptoSelectModalBody {
+                        position: absolute;
+                        left: 0;
+                        right: 0;
+                        height: 198.35px;
+                        background: #FFFFFF;
+                        border: 1px solid #D9D9D9;
+                        box-sizing: border-box;
+                        box-shadow: 0px 2px 0px rgba(0, 0, 0, 0.043);
+                        border-radius: 5px;
+                        z-index: 9999;
+                        .cryptoSelectModalTitle {
+                            position: absolute;
+                            left: 12px;
+                            top: 10.67px;
+                            font: 600 normal 14px Inter;
+                            line-height: 22px;
+                            color: #000000;
+                        }
+                        .upArrow {
+                            position: absolute;
+                            top: 0px;
+                            right: 2px;
+                            width: 32px;
+                            height: 40px;
+                            background: url(./up.png) no-repeat center;
+                            border: none;
+                            cursor: pointer;
+                        }
+                        .cryptoSelectList {
+                            position: relative;
+                            top: 38.95px;
+                            margin: 0;
+                            padding: 0;
+                            .cryptoSelectListItem {
+                                display: flex;
+                                justify-content: space-between;
+                                align-items: center;
+                                height: 52px;
+                                list-style: none;
+                                cursor: pointer;
+                                padding: 0 12px;
+                                &:not(:last-child) {
+                                    border-bottom: 1px solid #F0F0F0;
+                                }
+                                &:hover {
+                                    background: rgba(0, 0, 0, 0.1);
+                                }
+                                .cryptoSelectListItemCryptoContainer {
+                                    display: flex;
+                                    align-items: center;
+                                    .cryptoSelectListItemCryptoIcon {
+                                        width: 24px;
+                                        height: 24px;
+                                        &.cryptoUSDC {
+                                            background: center/contain url(./USDC.png);
+                                        }
+                                        &.cryptoWBTC {
+                                            background: center/contain url(./WBTC.png);
+                                        }
+                                        &.cryptoETH {
+                                            background: center/contain url(./ETH.png);
+                                        }
+                                    }
+                                    .cryptoSelectListItemCryptoNameContainer {
+                                        position: relative;
+                                        height: 36px;
+                                        .cryptoSelectListItemCryptoName {
+                                            position: absolute;
+                                            left: 12px;
+                                            top: 0px;
+                                            font: 600 normal 12px Inter;
+                                            line-height: 20px;
+                                            color: #000000;
+                                            white-space: nowrap;
+                                        }
+                                        .cryptoSelectListItemCryptoDesc {
+                                            position: absolute;
+                                            left: 12px;
+                                            top: 20px;
+                                            font: 400 normal 12px Inter;
+                                            line-height: 16px;
+                                            color: #8C8C8C;
+                                            white-space: nowrap;
+                                        }
+                                    }
+                                }
+                                .cryptoSelectListItemBalanceContainer {
+                                    position: relative;
+                                    height: 40px;
+                                    .cryptoSelectListItemValue {
+                                        position: absolute;
+                                        right: 0;
+                                        top: 0;
+                                        font: 600 normal 12px Inter;
+                                        line-height: 20px;
+                                        color: #000000;
+                                        white-space: nowrap;
+                                    }
+                                    .cryptoSelectListItemBalance {
+                                        position: absolute;
+                                        right: 0;
+                                        top: 20px;
+                                        font: 400 normal 12px Inter;
+                                        line-height: 20px;
+                                        color: #8C8C8C;
+                                        white-space: nowrap;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                .reviewButton {
+                    position: absolute;
+                    width: 285px;
+                    height: 48px;
+                    left: 0px;
+                    top: 277.5px;
+                    background: #0185FF;
+                    box-shadow: 0px 2px 0px rgba(0, 0, 0, 0.043);
+                    border-radius: 8px;
+                    border: none;
+                    font: 700 normal 14px Inter;
+                    line-height: 22px;
+                    text-align: center;
+                    color: #FFFFFF;
+                    cursor: pointer;
+                    &:disabled {
+                        opacity: 0.3;
+                        cursor: not-allowed;
+                    }
+                }
+            }
+        }
+        &.statusREVIEW,
+        &.statusAPPROVING,
+        &.statusAPPROVED,
+        &.statusCONFIRMING {
+            height: 518.18px;
+            .swapBody {
+                position: relative;
+                width: 285px;
+                height: 470.18px;
+                top: 24px;
+                margin: auto;
+                .swapInnerBody {
+                    height: 354.18px;
+                    .swapFromCryptoContainer {
+                        display: flex;
+                        justify-content: space-between;
+                        align-items: center;
+                        position: absolute;
+                        width: 285px;
+                        height: 32px;
+                        top: 0px;
+                        .swapFromCryptoAmountContainer {
+                            display: flex;
+                            align-items: center;
+                            .swapFromCryptoIcon {
+                                width: 22px;
+                                height: 22px;
+                                &.cryptoUSDC {
+                                    background: center/contain url(./USDC.png);
+                                }
+                                &.cryptoWBTC {
+                                    background: center/contain url(./WBTC.png);
+                                }
+                                &.cryptoETH {
+                                    background: center/contain url(./ETH.png);
+                                }
+                            }
+                            .swapFromCryptoAmount {
+                                position: relative;
+                                left: 11px;
+                                font: 600 normal 16px Inter;
+                                line-height: 32px;
+                                color: #000000;
+                            }
+                        }
+                        .swapFromCryptoName {
+                            font: 600 normal 16px Inter;
+                            line-height: 32px;
+                            color: #000000;
+                        }
+                    }
+                    .toArrow {
+                        position: absolute;
+                        width: 10px;
+                        height: 18px;
+                        left: 6px;
+                        top: 49.6px;
+                        background: url(./to-arrow2.png);
+                    }
+                    .swapToCryptoContainer {
+                        display: flex;
+                        justify-content: space-between;
+                        align-items: center;
+                        position: absolute;
+                        width: 285px;
+                        height: 32px;
+                        top: 87.6px;
+                        .swapToCryptoAmountContainer {
+                            display: flex;
+                            align-items: center;
+                            .swapToCryptoIcon {
+                                width: 22px;
+                                height: 22px;
+                                &.cryptoUSDC {
+                                    background: center/contain url(./USDC.png);
+                                }
+                                &.cryptoWBTC {
+                                    background: center/contain url(./WBTC.png);
+                                }
+                                &.cryptoETH {
+                                    background: center/contain url(./ETH.png);
+                                }
+                            }
+                            .swapToCryptoAmount {
+                                position: relative;
+                                left: 11px;
+                                font: 600 normal 16px Inter;
+                                line-height: 32px;
+                                color: #000000;
+                            }
+                        }
+                        .swapFromCryptoName {
+                            font: 600 normal 16px Inter;
+                            line-height: 32px;
+                            color: #000000;
+                        }
+                    }
+                    .swapDetailTitle {
+                        position: absolute;
+                        height: 22px;
+                        left: 0px;
+                        top: 154.58px;
+                        font: 600 normal 14px Inter;
+                        line-height: 22px;
+                        color: #8C8C8C;
+                        padding-bottom: 11.5px;
+                        border-bottom: 1px solid #F0F0F0;
+                        width: 100%;
+                    }
+                    .swapDetailContainer {
+                        position: absolute;
+                        width: 285px;
+                        height: 160px;
+                        top: 194.18px;
+                        .swapDetailReceivedContainer {
+                            display: flex;
+                            justify-content: space-between;
+                            align-items: center;
+                            width: 285px;
+                            height: 47px;
+                            border-bottom: 1px solid #F0F0F0;
+                            .swapDetailReceivedTitle {
+                                font: 400 normal 12px Inter;
+                                line-height: 16px;
+                                color: #8C8C8C;
+                            }
+                            .swapDetailReceivedAmount {
+                                font: 600 normal 12px Inter;
+                                line-height: 20px;
+                                color: #8C8C8C;
+                            }
+                        }
+                        .swapDetailFeeContainer {
+                            display: flex;
+                            justify-content: space-between;
+                            align-items: center;
+                            width: 285px;
+                            height: 47px;
+                            border-bottom: 1px solid #F0F0F0;
+                            .swapDetailFeeTitle {
+                                font: 400 normal 12px Inter;
+                                line-height: 16px;
+                                color: #8C8C8C;
+                            }
+                            .swapDetailFeeAmount {
+                                font: 600 normal 12px Inter;
+                                line-height: 20px;
+                                color: #8C8C8C;
+                            }
+                        }
+                    }
+                }
+                .approveButton,
+                .confirmButton {
+                    position: absolute;
+                    width: 285px;
+                    height: 48px;
+                    left: 0px;
+                    top: 364.18px;
+                    background: #0185FF;
+                    box-shadow: 0px 2px 0px rgba(0, 0, 0, 0.043);
+                    border-radius: 8px;
+                    border: none;
+                    font: 700 normal 14px Inter;
+                    line-height: 22px;
+                    text-align: center;
+                    color: #FFFFFF;
+                    cursor: pointer;
+                    &:disabled {
+                        background: #BABBCA;
+                        cursor: not-allowed;
+                    }
+                }
+                .cancelButton {
+                    position: absolute;
+                    width: 285px;
+                    height: 48px;
+                    left: 0px;
+                    top: 422.18px;
+                    background: #FFFFFF;
+                    border: 1px solid #D9D9D9;
+                    box-sizing: border-box;
+                    box-shadow: 0px 2px 0px rgba(0, 0, 0, 0.016);
+                    border-radius: 8px;
+                    font: 500 normal 14px Inter;
+                    line-height: 22px;
+                    text-align: center;
+                    color: rgba(0, 0, 0, 0.65);
+                    cursor: pointer;
+                }
+            }
+        }
+    }
+}
