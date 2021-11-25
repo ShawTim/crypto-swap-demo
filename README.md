@@ -1,44 +1,74 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app), using the [Redux](https://redux.js.org/) and [Redux Toolkit](https://redux-toolkit.js.org/) template.
+This project is to demostrate the work of React+Redux+Metamask in typescript by implementing a **Crypto Swap Demo**.
 
-## Available Scripts
+The application can let you:
+- connect with Metamask for login
+- connect to [CoinGecko API](https://www.coingecko.com/api/documentations/v3#/) to get the real time price of USDC/WBTC/ETH
+- swap between USDC/WBTC/ETH with dummy data in the wallet in Redux (no blockchain transactions)
+- keyboard navigation support through TAB
 
-In the project directory, you can run:
+## Overview
+### Tech Stack
+#### React+Redux (Web application framework)
+Start with [Create React App](https://github.com/facebook/create-react-app), using the [Redux](https://redux.js.org/) and [Redux Toolkit](https://redux-toolkit.js.org/) template.
+```
+npx create-react-app crypto-swap-demo --template redux-typescript
+```
 
-### `npm start`
+The template will come with redux [slice pattern](https://redux.js.org/faq/code-structure#what-should-my-file-structure-look-like-how-should-i-group-my-action-creators-and-reducers-in-my-project-where-should-my-selectors-go).
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+After installation you will need to eject CRA:
+```
+npm run eject
+```
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+#### react-router (React modules for handling navigation)
+React applications are commonly built as a SPA (Single Page Application) with URL dynamically rewriting. [react-router](https://reactrouter.com/) is essential and also [connected-react-router](https://github.com/supasate/connected-react-router) for Redux binding with react-router.
 
-### `npm test`
+After deployed on Github page, without server-side support, the web application will get a 404 fail if user do a browser refresh on some path (non-root path). To solve this, either use `HashRouter` with `HashHistory` in [react-router](https://reactrouter.com/web/api/HashRouter), or [do a trick with 404 handling](https://github.com/rafgraph/spa-github-pages). This project uses the latter one.
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+#### webpack (bundler)
+[webpack](https://webpack.js.org/) comes with CRA (Create React App) for bunlding. Also [babel](https://babeljs.io/) and other webpack plugins. You may refer to `package.json` for detail.
 
-### `npm run build`
+#### node-sass (SCSS support)
+This project uses SCSS modules so [node-sass](https://www.npmjs.com/package/node-sass) is required for devDependency.
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+#### numeral.js (number formatting and calculation)
+By default the number in JS is a 64bits double with 53bits mantissa which is dangerous for decimal calculation (BTC is expensive!). Thus you may want to have a library to help you to calculate and format the numbers.
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+In particular, since CoinGecko API only provides a limited list of `vs_currency` for coin pairs (no WBTC and USDC in the list), to get the price of WBTC/USDC you will need to get the price of WBTC and USDC in USD first and then calculate the price for the WBTC/USDC:
+`WBTC/USDC = WBTC/USD * USD/USDC = (WBTC/USD) / (USDC/USD)`
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+#### ethers.js (Ethereum interacting library)
+[ethers.js](https://docs.ethers.io/v5/) is used to connect Metamask and handle further tasks on ethereum if necessary.
 
-### `npm run eject`
+---
+### Avalable scripts
+dev run:
+```
+npm start
+```
+build for web application (on Github page, [here](https://shawtim.github.io/crypto-swap-demo/))
+```
+npm run build:github
+```
+---
+### UI flow
+There are 2 pages in this application.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+No matter which pages or what path you are at, if you dont have Metamask connected, you will be redirected to the *Connect Wallet Page*:
+![image](https://user-images.githubusercontent.com/85455/143505399-6b295d2f-d111-4e96-83ce-152829a759d5.png)
+Click the button to connect Metamask to continue.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Once you have Metamask connected, no matter which pages or what path you are at, you will be redirected to the *Swap Page*:
+![image](https://user-images.githubusercontent.com/85455/143505549-e7d7a8dd-a7ce-4b19-9292-98acdef238c7.png)
+In *Swap Page* there are 2 components. On the left hand side it's *Crypto Balances Component*, on the right hand side it's *Crypto Swap Component*.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+In *Crypto Balance Component* you may check the crypto balance in your dummy wallet, with the market value of your crypto asset calculated in USD:
+![image](https://user-images.githubusercontent.com/85455/143505823-add92ecf-f6f3-4bf0-aaff-89d726103b14.png)
+You may click on the button with right arrow to start swapping cryptos.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+For example you can set a certain amount of Ethereum:
+![image](https://user-images.githubusercontent.com/85455/143506024-627ee3e5-ed5c-488f-beb0-29d8b2821631.png)
+The swapped crypto amount will be reflected immediately. 
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+***TBC***
