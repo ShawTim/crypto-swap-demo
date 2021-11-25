@@ -49,7 +49,7 @@ const CryptoSwapInitial = (props: any) => {
       const amount = numeral(str).value() || 0;
       if (amount > balances[uiState.fromCrypto]) {
         onChangeFromAmount(`${balances[uiState.fromCrypto]}`);
-      } else if (amount <= 0) {
+      } else if (amount < 0) {
         onChangeFromAmount("");
       } else {
         onChangeFromAmount(str);
