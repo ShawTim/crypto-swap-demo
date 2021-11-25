@@ -5,11 +5,9 @@
     background: #FFFFFF;
     margin: auto;
     .innerContainer {
-        position: absolute;
+        position: relative;
         width: 960px;
-        height: 1400px;
-        left: calc(50% - 960px/2 - 4px);
-        top: 0px;
+        margin: auto;
         .cryptoBalances {
             position: absolute;
             height: 264px;

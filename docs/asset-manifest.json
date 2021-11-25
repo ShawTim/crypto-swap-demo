@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/crypto-swap-demo/static/css/main.f9a37cab.chunk.css",
+    "main.css": "/crypto-swap-demo/static/css/main.ea1e8d9a.chunk.css",
     "main.js": "/crypto-swap-demo/static/js/main.2fb4c9fd.chunk.js",
     "main.js.map": "/crypto-swap-demo/static/js/main.2fb4c9fd.chunk.js.map",
     "runtime-main.js": "/crypto-swap-demo/static/js/runtime-main.da59ed26.js",
@@ -10,7 +10,7 @@
     "static/js/2.20aa6160.chunk.js.map": "/crypto-swap-demo/static/js/2.20aa6160.chunk.js.map",
     "index.html": "/crypto-swap-demo/index.html",
     "static/css/2.d1ddd530.chunk.css.map": "/crypto-swap-demo/static/css/2.d1ddd530.chunk.css.map",
-    "static/css/main.f9a37cab.chunk.css.map": "/crypto-swap-demo/static/css/main.f9a37cab.chunk.css.map",
+    "static/css/main.ea1e8d9a.chunk.css.map": "/crypto-swap-demo/static/css/main.ea1e8d9a.chunk.css.map",
     "static/js/2.20aa6160.chunk.js.LICENSE.txt": "/crypto-swap-demo/static/js/2.20aa6160.chunk.js.LICENSE.txt",
     "static/media/index.module.scss": "/crypto-swap-demo/static/media/USDC.ee4a979e.png",
     "static/media/index.css": "/crypto-swap-demo/static/media/inter-vietnamese-400-normal.fac160b0.woff2",
@@ -20,7 +20,7 @@
     "static/js/runtime-main.da59ed26.js",
     "static/css/2.d1ddd530.chunk.css",
     "static/js/2.20aa6160.chunk.js",
-    "static/css/main.f9a37cab.chunk.css",
+    "static/css/main.ea1e8d9a.chunk.css",
     "static/js/main.2fb4c9fd.chunk.js"
   ]
 }
