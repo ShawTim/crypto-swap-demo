@@ -89,6 +89,8 @@ The *Review Button* will only be active when the coin pair is different pair and
 
 Now you will be able to review the transaction details, what and how much you will receive and how much is the fee. If no problem, click *Approve Swap Button* to continue. If not, you may click either the *Cancel Button* or the *X Button* to cancel the transaction.
 
+Note that if the received amount < 0 (i.e. transaction fee > swapped amount), you cannot approve the transaction (technically you can, but why?)
+
 ![image](https://user-images.githubusercontent.com/85455/143509239-77d44e82-13d4-43fa-861a-f29fb3eec037.png)
 
 This is the final step for swapping. You will need to click *Confirm Button* to continue, or, click either the *Cancel Button* or the *X Button* to cancel the transaction.
