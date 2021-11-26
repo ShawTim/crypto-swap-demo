@@ -1,5 +1,7 @@
 This project is to demostrate the work of React+Redux+Metamask in typescript by implementing a **Crypto Swap Demo**.
 
+![image](https://user-images.githubusercontent.com/85455/143508661-be3ac5f4-0a76-4033-ba41-202c036e4259.png)
+
 The application can let you:
 - connect with Metamask for login
 - connect to [CoinGecko API](https://www.coingecko.com/api/documentations/v3#/) to get the real time price of USDC/WBTC/ETH
@@ -55,20 +57,42 @@ npm run build:github
 ### UI flow
 There are 2 pages in this application.
 
-No matter which pages or what path you are at, if you dont have Metamask connected, you will be redirected to the *Connect Wallet Page*:
 ![image](https://user-images.githubusercontent.com/85455/143505399-6b295d2f-d111-4e96-83ce-152829a759d5.png)
+
+No matter which pages or what path you are at, if you dont have Metamask connected, you will be redirected to the *Connect Wallet Page*.
 Click the button to connect Metamask to continue.
 
-Once you have Metamask connected, no matter which pages or what path you are at, you will be redirected to the *Swap Page*:
 ![image](https://user-images.githubusercontent.com/85455/143505549-e7d7a8dd-a7ce-4b19-9292-98acdef238c7.png)
+
+Once you have Metamask connected, no matter which pages or what path you are at, you will be redirected to the *Swap Page*.
 In *Swap Page* there are 2 components. On the left hand side it's *Crypto Balances Component*, on the right hand side it's *Crypto Swap Component*.
 
-In *Crypto Balance Component* you may check the crypto balance in your dummy wallet, with the market value of your crypto asset calculated in USD:
 ![image](https://user-images.githubusercontent.com/85455/143505823-add92ecf-f6f3-4bf0-aaff-89d726103b14.png)
+
+In *Crypto Balance Component* you may check the crypto balance in your dummy wallet, with the market value of your crypto asset calculated in USD.
 You may click on the button with right arrow to start swapping cryptos.
 
-For example you can set a certain amount of Ethereum:
 ![image](https://user-images.githubusercontent.com/85455/143506024-627ee3e5-ed5c-488f-beb0-29d8b2821631.png)
-The swapped crypto amount will be reflected immediately. 
 
-***TBC***
+For example you can set a certain amount of Ethereum:
+The swapped crypto amount will be reflected immediately.
+
+![image](https://user-images.githubusercontent.com/85455/143508786-5072fb85-b0a4-4585-94ea-b0f10b740377.png)
+
+You can choose another pair, say, ETH/WBTC.
+
+![image](https://user-images.githubusercontent.com/85455/143508875-1262f76d-17b4-4d3b-8788-68372c2acfaa.png)
+
+The *Review Button* will only be active when the coin pair is different pair and the amount of crypto being swapped is not zero. Click *Review Button* to continue.
+
+![image](https://user-images.githubusercontent.com/85455/143509095-58656f2d-4479-4515-a6f0-623e1aae5359.png)
+
+Now you will be able to review the transaction details, what and how much you will receive and how much is the fee. If no problem, click *Approve Swap Button* to continue. If not, you may click either the *Cancel Button* or the *X Button* to cancel the transaction.
+
+![image](https://user-images.githubusercontent.com/85455/143509239-77d44e82-13d4-43fa-861a-f29fb3eec037.png)
+
+This is the final step for swapping. You will need to click *Confirm Button* to continue, or, click either the *Cancel Button* or the *X Button* to cancel the transaction.
+
+![image](https://user-images.githubusercontent.com/85455/143509283-b774cda7-682f-4147-a074-ae0f708ef7c7.png)
+
+Success! You can now see 8.45 ETH is swapped to WBTC.
