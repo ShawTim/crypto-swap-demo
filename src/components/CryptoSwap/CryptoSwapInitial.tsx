@@ -60,26 +60,26 @@ const CryptoSwapInitial = (props: any) => {
     setFromCryptoSelectOpen(false);
     setToCryptoSelectOpen(false);
     onChangeIsModalOpen(false);
-  }, []);
+  }, [onChangeIsModalOpen]);
   const onSelectFromCrypto = useCallback((crypto: SupportedCryptos) => {
     onChangeFromCrypto(crypto);
     onChangeFromAmount("");
     closeCryptoSelectModal();
-  }, [onChangeFromCrypto, onChangeFromAmount]);
+  }, [onChangeFromCrypto, onChangeFromAmount, closeCryptoSelectModal]);
   const onSelectToCrypto = useCallback((crypto: SupportedCryptos) => {
     onChangeToCrypto(crypto);
     closeCryptoSelectModal();
-  }, [onChangeToCrypto]);
+  }, [onChangeToCrypto, closeCryptoSelectModal]);
   const openFromCryptoSelectModal = useCallback(() => {
     setFromCryptoSelectOpen(true);
     setToCryptoSelectOpen(false);
     onChangeIsModalOpen(true);
-  }, []);
+  }, [onChangeIsModalOpen]);
   const openToCryptoSelectModal = useCallback(() => {
     setFromCryptoSelectOpen(false);
     setToCryptoSelectOpen(true);
     onChangeIsModalOpen(true);
-  }, []);
+  }, [onChangeIsModalOpen]);
 
   return (
     <div className={styles.swapBody}>

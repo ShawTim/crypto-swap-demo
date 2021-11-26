@@ -19,6 +19,7 @@ const CryptoSwapApprove = (props: any) => {
   const [toAmount, setToAmount] = useState("");
   const [receivedAmount, setReceivedAmount] = useState("");
   const [feeAmount, setFeeAmount] = useState("");
+  const [invalidTransaction, setInvalidTransaction] = useState(false);
   const [ellipsis, setEllipsis] = useState("");
 
   // get use of useEffect and useState such that no need to call in every re-render
@@ -26,11 +27,14 @@ const CryptoSwapApprove = (props: any) => {
   useEffect(() => {
     if ((numeral(uiState.fromAmount).value() || 0) > 0) {
       const amount = numeral(uiState.fromAmount).multiply(prices[uiState.fromCrypto][uiState.toCrypto]);
+      const recevied = numeral(amount).subtract(CRYPTO_TXN_FEES[uiState.toCrypto]);
       setToAmount(amount.format("0.00[000000]"));
-      setReceivedAmount(amount.subtract(CRYPTO_TXN_FEES[uiState.toCrypto]).format("0.00[000000]"));
+      setReceivedAmount(recevied.format("0.00[000000]"));
+      setInvalidTransaction((recevied.value() || 0) < 0);
     } else {
       setToAmount("0.00");
       setReceivedAmount("0.00");
+      setInvalidTransaction(true);
     }
   }, [prices, uiState.fromAmount, uiState.fromCrypto, uiState.toCrypto, setToAmount]);
   useEffect(() => setFeeAmount(numeral(CRYPTO_TXN_FEES[uiState.toCrypto]).format("0,0.00[000000]")), [uiState.toCrypto]);
@@ -79,10 +83,18 @@ const CryptoSwapApprove = (props: any) => {
           </div>
         </div>
       </div>
-      {uiState.status === SwapStatus.REVIEW && <button className={styles.approveButton} onClick={onClickApproveButton}>Approve Swap</button>}
-      {uiState.status === SwapStatus.APPROVING && <button className={styles.approveButton} disabled>Approve in wallet{ellipsis}</button>}
-      {uiState.status === SwapStatus.APPROVED && <button className={styles.confirmButton} onClick={onClickConfirmButton}>Confirm Swap</button>}
-      {uiState.status === SwapStatus.CONFIRMING && <button className={styles.confirmButton} disabled>Confirm in wallet{ellipsis}</button>}
+      {uiState.status === SwapStatus.REVIEW && (
+        <button className={styles.approveButton} onClick={onClickApproveButton} disabled={invalidTransaction}>Approve Swap</button>
+      )}
+      {uiState.status === SwapStatus.APPROVING && (
+        <button className={styles.approveButton} disabled>Approve in wallet{ellipsis}</button>
+      )}
+      {uiState.status === SwapStatus.APPROVED && (
+        <button className={styles.confirmButton} onClick={onClickConfirmButton} disabled={invalidTransaction}>Confirm Swap</button>
+      )}
+      {uiState.status === SwapStatus.CONFIRMING && (
+        <button className={styles.confirmButton} disabled>Confirm in wallet{ellipsis}</button>
+      )}
       <button className={styles.cancelButton} onClick={onClickCancelButton}>Cancel</button>
     </div>
   );
